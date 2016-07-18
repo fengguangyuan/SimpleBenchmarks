@@ -1,0 +1,6 @@
+2048K 9ms => 1M 4.5ms
+
+6134K 29ms => 1M 4.8ms
+
+When block size is 1~3M, the FileChannel writting has the optimized
+efficiency.

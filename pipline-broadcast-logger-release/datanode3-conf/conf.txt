@@ -1,0 +1,10 @@
+# DATANODE LIST : NAME IP PORT
+DataNode1 localhost 5656
+DataNode2 localhost 5657
+DataNode3 localhost 5658
+
+# Default server name, default adjacent server name.
+# Like:
+#   DataNode 
+#   DataNode1 DataNode2
+DataNode3
