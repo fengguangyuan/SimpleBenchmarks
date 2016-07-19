@@ -42,7 +42,7 @@ public class ReceiveHandler implements Runnable {
                 }
             }
             endTime = LocalTime.now();
-            logger.log(Level.INFO, (counter - 1) + " data blocks has been received!!!!");
+            logger.log(Level.INFO, counter + " data blocks has been received!!!!");
             logger.log(Level.INFO, "[END TIME]: " + endTime);
             logger.log(Level.INFO, "[TOTAL TIME]: " + (endTime.toSecondOfDay() - startTime.toSecondOfDay()) + "s");
         } catch (CancelledKeyException cke) {

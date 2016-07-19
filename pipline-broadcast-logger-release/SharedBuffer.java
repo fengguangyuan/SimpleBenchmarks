@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SharedBuffer {
     private static SharedBuffer instance = null;
-    public static final int DEFAULT_BUFFER_SIZE = 1024 * 1024 + 4;
+    public static final int DEFAULT_BUFFER_SIZE = Context.conf.getBlockSize() + 4;
     public static final int SERVER_COUNTS = Context.conf.getServerCnts();
     private byte[] clientData = new byte[DEFAULT_BUFFER_SIZE];
     private byte[] serverData = new byte[DEFAULT_BUFFER_SIZE];

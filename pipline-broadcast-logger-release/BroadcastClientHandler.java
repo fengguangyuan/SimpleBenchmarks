@@ -4,14 +4,14 @@ import java.net.InetSocketAddress;
 
 public class BroadcastClientHandler extends GeneralClientHandler {
 
-    public BroadcastClientHandler(int id, MyLogger logger) throws IOException {
+    public BroadcastClientHandler(int id) throws IOException {
         // GeneralClientHandler(id);
-        super(id, logger);
+        super(id);
     }
 
-    public BroadcastClientHandler(int id, String serverName, MyLogger logger) throws IOException {
+    public BroadcastClientHandler(int id, String serverName) throws IOException {
         // GeneralClientHandler(id, serverName);
-        super(id, serverName, logger);
+        super(id, serverName);
     }
 
     @Override

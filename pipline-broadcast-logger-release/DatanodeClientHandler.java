@@ -4,12 +4,12 @@ import java.net.InetSocketAddress;
 
 public class DatanodeClientHandler extends GeneralClientHandler {
 
-    DatanodeClientHandler(int id, MyLogger logger) throws Exception {
-        super(id, logger);
+    DatanodeClientHandler(int id) throws Exception {
+        super(id);
     }
 
-    DatanodeClientHandler(int id, String serverName, MyLogger logger) throws Exception {
-        super(id, serverName, logger);
+    DatanodeClientHandler(int id, String serverName) throws Exception {
+        super(id, serverName);
     }
 
     @Override

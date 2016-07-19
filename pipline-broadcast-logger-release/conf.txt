@@ -8,11 +8,14 @@ DataNode3 localhost 5658
 #   DataNode1 
 #   DataNode1 DataNode2
 
-#DataNode1 
 DataNode1 DataNode2
+#DataNode1
 
 # work mode, if 'OFF' marked, broadcast mode wo chosed.
-PIPLINE ON
+PIPELINE ON
 
 # the amount of blocks, default block size is 1M
 BLOCKS 10000
+
+# the size of a block, 1048576 = 1024 * 1024
+BLOCKSIZE 524288

@@ -3,12 +3,12 @@ import java.nio.ByteBuffer;
 import java.net.InetSocketAddress;
 
 public class PiplineClientHandler extends GeneralClientHandler {
-    public PiplineClientHandler(int id, MyLogger logger) throws IOException {
-        super(id, logger);
+    public PiplineClientHandler(int id) throws IOException {
+        super(id);
     }
 
-    public PiplineClientHandler(int id, String serverName, MyLogger logger) throws IOException {
-        super(id, serverName, logger);
+    public PiplineClientHandler(int id, String serverName) throws IOException {
+        super(id, serverName);
     }
 
     @Override

@@ -67,7 +67,7 @@ class SocketDaemon implements Runnable {
                             logger.log(Level.INFO, serverName + " reading thread startups successfully!");
 
                             if (adjServerName != null) {
-                                new Thread(new DatanodeClientHandler(100, adjServerName, logger)).start();
+                                new Thread(new DatanodeClientHandler(100, adjServerName)).start();
                                 logger.log(Level.INFO, serverName + " client thread startups successfully!");
                             } else { 
                                 logger.log(Level.INFO, "The last DataNode startup successfully!");

@@ -18,21 +18,19 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
         // mode of pipline
-        if (Context.conf.otherConfMap().containsKey("pipline") &&
-            Context.conf.otherConfMap().get("pipline").equals("on")) {
-
-            new Thread(new PiplineClientHandler(id++, Context.conf.getDefaultServerName(), logger)).start();
+        if (Context.conf.isPipeline()) {
+            logger.log(Level.INFO, ">Pipeline< working mode selected!!!");
+            new Thread(new PiplineClientHandler(id++, Context.conf.getDefaultServerName())).start();
             // new Thread(new ClientHandler(id++)).start();
-        } else if (Context.conf.otherConfMap().containsKey("pipline") &&
-            Context.conf.otherConfMap().get("pipline").equals("off")) {
-
+        } else if (Context.conf.isBroadcast()) {
+            logger.log(Level.INFO, ">Broadcast< working mode selected!!!");
             // mode of broadcast
             HashMap<String, String> nameToIp = Context.conf.nameToIp();
             Iterator it = nameToIp.keySet().iterator();
             while(it.hasNext()) {
                 String serverName = (String) it.next();
                 // new Thread(new ClientHandler(id++, "DataNode2")).start();
-                new Thread(new BroadcastClientHandler(id++, serverName, logger)).start();
+                new Thread(new BroadcastClientHandler(id++, serverName)).start();
             }
         }
     }
@@ -86,6 +84,7 @@ class ClientHandler implements Runnable {
             if (Context.conf.otherConfMap().containsKey("blocks")) {
                 blocks = Integer.parseInt(Context.conf.otherConfMap().get("blocks"));
             }
+
             logger.log(Level.INFO, blocks + " * 1M's data will be transmitted!");
             for (int j = 0; j < blocks; j++) {
                 work();
@@ -108,8 +107,7 @@ class ClientHandler implements Runnable {
         write(cache, reply);
     }
  
-    private void write(byte[] cache, byte[] reply) throws IOException
-    {
+    private void write(byte[] cache, byte[] reply) throws IOException {
         byte[] data = sb.getServerBuffer();
 
         // copy locat data to shared buffer

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 class Context {
+    private static int block_size = 1024 * 1024;
     private String fileLocation = "../conf.txt";
     private HashMap<String, String> nameToIP = new HashMap<String, String>();
     private HashMap<String, Integer> nameToPort = new HashMap<String, Integer>();
@@ -57,6 +58,22 @@ class Context {
 
     public int getServerCnts() {
         return serverCnts;
+    }
+
+    public int getBlockSize() {
+        if (otherConf.containsKey("blocksize")) {
+            return Integer.parseInt(otherConf.get("blocksize"));
+        } else {
+            return block_size;
+        }
+    }
+
+    public boolean isPipeline() {
+        return otherConf.containsKey("pipeline") && otherConf.get("pipeline").equals("on");
+    }
+
+    public boolean isBroadcast() {
+        return otherConf.containsKey("pipeline") && otherConf.get("pipeline").equals("off");
     }
 
     public void readConf(String filename) throws IOException {
